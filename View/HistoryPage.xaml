@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CalculatorWithHistory.View.HistoryPage"
+             xmlns:viewmodel="clr-namespace:CalculatorWithHistory.ViewModel"
+             x:DataType="viewmodel:HistoryViewModel"
+             BackgroundImageSource="background.png"
+             Title="HistoryPage">
+
+    <Grid RowDefinitions="*,auto">
+    <CollectionView Grid.Row="0" ItemsSource="{Binding Items}"  >
+        <CollectionView.ItemTemplate>
+            <DataTemplate x:DataType="{x:Type x:String}">
+
+                <Grid Padding="10">
+                    <Frame BackgroundColor="Transparent">
+
+                        <Label Grid.Row="0" FontSize="25" TextColor="White" Text="{Binding .}"/>
+
+
+                    </Frame>
+                    <!--  <Frame HeightRequest="100">
+                            <Label Text="{Binding id}" FontSize="20"  />
+                        </Frame>
+                        <Frame HeightRequest="1">
+                            <Label Text="{Binding question}" FontSize="20"  /> 
+                        </Frame> -->
+                </Grid>
+
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+    </CollectionView>
+
+        <ImageButton Source="trash.jpg" Command="{Binding DeleteAllCommand}"
+                    HorizontalOptions="EndAndExpand"
+                    VerticalOptions="EndAndExpand" HeightRequest="50" WidthRequest="50" />
+    </Grid>
+</ContentPage>
